@@ -30,16 +30,17 @@ export default function Textform(props) {
     };
 
     const handleCopy=()=>{
-        let newText= document.getElementById("myBox");
-        newText.select();
-        navigator.clipboard.writeText(newText.value);
+        // let newText= document.getElementById("myBox");
+        // newText.select();
+        navigator.clipboard.writeText(text);
+        // document.getSelection().removeAllRanges();
         if(text===""){
             props.showAlert(" No text is Entered!","warning");
         }else{
             props.showAlert("Text is Copied!","success");
         }    
     };
-
+    
     const handleLowClick=()=>{
         let newText= text.toLowerCase();
         setText(newText);
@@ -75,24 +76,23 @@ export default function Textform(props) {
   return (
     <> 
     <div className="container" style={{color: props.mode==="light"?"black":"white"}}>
-        <h2>{props.heading}</h2>
+        <h2 className='my-3 text-center'>{props.heading}</h2>
         <div className="mb-3">
-            <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==="light"?"white":"grey",color: props.mode==="light"?"black":"white"}} id="myBox" rows="8" placeholder="Enter text here"></textarea>
+            <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==="light"?"white":"#00d5ff6c"}} id="myBox" rows="8" placeholder="Enter text here"></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-        <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to Lowercase</button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpace}>Remove Extra Spaces</button>
-        <button className="btn btn-primary mx-2" onClick={handleFirstChar}>Convert First Char to Capital</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Convert to Uppercase</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleLowClick}>Convert to Lowercase</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleClearClick}>Clear Text</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleExtraSpace}>Remove Extra Spaces</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleFirstChar}>Convert First Char to Capital</button>
     </div>
     <div className="container my-3" style={{color: props.mode==="light"?"black":"white"}}>
         <h2>Text Summary</h2>
-        <p>{(text.split(/[" "]+/).length)-1} words and {text.length} characters</p>
+        <p>{(text.split(/\s+/).length)-1} words and {text.length} characters</p>
         <h3>Preview</h3>
         <p>{text.length>0?text:"Enter text in above textbox to preview it."}</p>
     </div>
     </>
   )
-}
-
+};

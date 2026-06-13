@@ -1,15 +1,15 @@
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import React, { useState } from 'react'
-// import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 
 function App() {
   const [mode, setMode]= useState("light");
-  const [alert, setAlert]= useState(null);
+  const [alert, setAlert]= useState("");
 
   const showAlert=(message,type)=>{
         setAlert({
@@ -35,12 +35,12 @@ function App() {
   }
   return (
     <>
-     <Navbar title ="TextUtils" about="About TextUtils" mode={mode} toggleMode={toggleMode} />
+     {/* <Navbar title ="TextUtils" about="About TextUtils" mode={mode} toggleMode={toggleMode} />
      <Alert alert={alert} />
-     <Textform heading = "Enter The Text To Analyse Below" mode={mode} toggleMode={toggleMode} showAlert={showAlert}/>
-      
-      {/* <Router>
-        <Navbar title ="TextUtils" about="About TextUtils" mode={mode} toggleMode={toggleMode} />
+     <Textform heading = "Try TextUtils - Manipulate Your Text to Uppercase, Lowercase, etc." mode={mode} toggleMode={toggleMode} showAlert={showAlert}/>
+       */}
+      <Router>
+        <Navbar title ="TextUtils" about="About" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />  
         <div className="container my-5" >
               <Routes>
@@ -49,7 +49,7 @@ function App() {
                 <Route exact path="/about" element={<About mode={mode}/>}/>
               </Routes>
         </div>
-      </Router> */}
+      </Router>
     </>
   );
 }
