@@ -4,7 +4,7 @@ import About from './components/About';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import React, { useState } from 'react'
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
      <Alert alert={alert} />
      <Textform heading = "Try TextUtils - Manipulate Your Text to Uppercase, Lowercase, etc." mode={mode} toggleMode={toggleMode} showAlert={showAlert}/>
        */}
-      <Router>
+      <HashRouter>
         <Navbar title ="TextUtils" about="About" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />  
         <div className="container my-5" >
@@ -49,7 +49,7 @@ function App() {
                 <Route exact path="/about" element={<About mode={mode}/>}/>
               </Routes>
         </div>
-      </Router>
+      </HashRouter>
     </>
   );
 }
