@@ -9,7 +9,7 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 
 function App() {
   const [mode, setMode]= useState("light");
-  const [alert, setAlert]= useState("");
+  const [alert, setAlert]= useState(null);
 
   const showAlert=(message,type)=>{
         setAlert({
@@ -35,14 +35,10 @@ function App() {
   }
   return (
     <>
-     {/* <Navbar title ="TextUtils" about="About TextUtils" mode={mode} toggleMode={toggleMode} />
-     <Alert alert={alert} />
-     <Textform heading = "Try TextUtils - Manipulate Your Text to Uppercase, Lowercase, etc." mode={mode} toggleMode={toggleMode} showAlert={showAlert}/>
-       */}
       <HashRouter>
         <Navbar title ="TextUtils" about="About" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />  
-        <div className="container my-5" >
+        <div className="container" >
               <Routes>
                 <Route exact path="/" element={<Textform heading = "Enter The Text To Analyse Below" mode={mode} toggleMode={toggleMode} showAlert={showAlert}/>}/>
                     
